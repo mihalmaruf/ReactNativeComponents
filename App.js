@@ -10,6 +10,7 @@ import Switch from './components/Switch';
 import Tabs from './components/Tabs';
 import TodoList from './components/TodoList';
 import { useState } from 'react';
+import FormValidation from './components/FormValidation';
 
 LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
 
@@ -32,6 +33,7 @@ export default function App() {
           <Switch />
           <Tabs />
           <TodoList />
+          <FormValidation />
         </View>
       </ScrollView>
     </SafeAreaView>

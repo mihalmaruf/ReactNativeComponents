@@ -1,20 +1,45 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, LogBox, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Counter from './components/Counter';
+import Carousel from './components/Carousel';
+import DataFetch from './components/DataFetch';
+import Dropdown from './components/Dropdown';
+import ModalView from './components/ModalView';
+import MultiStepForm from './components/MultiStepForm';
+import SearchFilter from './components/SearchFilter';
+import Switch from './components/Switch';
+import Tabs from './components/Tabs';
+import TodoList from './components/TodoList';
+import { useState } from 'react';
+
+LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
 
 export default function App() {
+  const [modal, setModal] = useState(false);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.container}>
+          <Counter />
+          <Carousel />
+          <DataFetch />
+          <Dropdown />
+          <Button title="Open Modal" onPress={() => setModal(true)} />
+          <ModalView visible={modal} onClose={() => setModal(false)} >
+            <Text>Modal Content</Text>
+          </ModalView>
+          <MultiStepForm />
+          <SearchFilter />
+          <Switch />
+          <Tabs />
+          <TodoList />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    gap: 20,
   },
 });
